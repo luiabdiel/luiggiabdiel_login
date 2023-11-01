@@ -10,8 +10,8 @@ export class CreateUserTable1698848446762 implements MigrationInterface {
         password VARCHAR(255) NOT NULL,
         email VARCHAR(100) NOT NULL,
         isTeacher BOOLEAN NOT NULL,
-        createdAt TIMESTAMP NOT NULL,
-        updatedAt TIMESTAMP NOT NULL
+        createdAt TIMESTAMP,
+        updatedAt TIMESTAMP
       );
     `);
   }

@@ -26,9 +26,9 @@ export class User {
   @Column({ name: "isTeacher", nullable: false })
   isTeacher: boolean;
 
-  @CreateDateColumn({ name: "createdAt", nullable: false })
+  @CreateDateColumn({ name: "createdAt" })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: "updatedAt", nullable: false })
+  @UpdateDateColumn({ name: "updatedAt" })
   updatedAt: Date;
 }
