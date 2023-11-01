@@ -4,19 +4,27 @@ import userRepository from "../repositories/user.repository";
 export const userRouter = Router();
 
 userRouter.get("/", async (_, res: Response): Promise<Response> => {
-  const users = await userRepository.findUsers();
+  try {
+    const users = await userRepository.findUsers();
 
-  return res.status(200).json(users);
+    return res.status(200).json(users);
+  } catch (error) {
+    return res.status(500).json({ error: "Internal server error." });
+  }
 });
 
 userRouter.get(
   "/:id",
   async (req: Request, res: Response): Promise<Response> => {
-    const idUser = Number(req.params.id);
+    try {
+      const idUser = Number(req.params.id);
 
-    const user = await userRepository.findUserById(idUser);
+      const user = await userRepository.findUserById(idUser);
 
-    return res.status(200).json(user);
+      return res.status(200).json(user);
+    } catch (error) {
+      return res.status(404).json({ error: "User not found." });
+    }
   }
 );
 
