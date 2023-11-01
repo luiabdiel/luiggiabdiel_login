@@ -1,16 +1,15 @@
 import { AppDataSource } from "../../database/data-source";
-import { User } from "../entities/user.entity";
-import { IUser } from "../interfaces/user.interface";
+import { UserEntity } from "../entities/user.entity";
 
-export const userRepository = AppDataSource.getRepository(User);
+export const userRepository = AppDataSource.getRepository(UserEntity);
 
-function findUsers(): Promise<IUser[]> {
+function findUsers(): Promise<UserEntity[]> {
   return userRepository.find({
     select: ["fullName", "userName", "email", "isTeacher"],
   });
 }
 
-function findUserById(userId: number) {
+function findUserById(userId: number): Promise<UserEntity | null> {
   const user = userRepository.findOne({
     where: {
       id: userId,
