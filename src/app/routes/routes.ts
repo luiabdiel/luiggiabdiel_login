@@ -4,4 +4,5 @@ import { userRouter } from "../controllers/user.controller";
 export const routers = Router();
 
 routers.use("/users", userRouter);
-routers.use("/users/", userRouter);
+routers.use("/users", userRouter);
+routers.use("/register", userRouter);

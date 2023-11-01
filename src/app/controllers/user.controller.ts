@@ -19,3 +19,15 @@ userRouter.get(
     return res.status(200).json(user);
   }
 );
+
+userRouter.post("/", async (req: Request, res: Response): Promise<Response> => {
+  try {
+    const userData = req.body;
+
+    const newUser = await userRepository.createUser(userData);
+
+    return res.status(201).json(newUser);
+  } catch (error) {
+    return res.status(500).json({ error: "Error creating the user." });
+  }
+});
