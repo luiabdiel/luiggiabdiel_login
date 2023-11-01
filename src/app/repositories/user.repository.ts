@@ -4,10 +4,28 @@ import { IUser } from "../interfaces/user.interface";
 
 export const userRepository = AppDataSource.getRepository(User);
 
-function getUsers(): Promise<IUser[]> {
-  return userRepository.find();
+function findUsers(): Promise<IUser[]> {
+  return userRepository.find({
+    select: ["fullName", "userName", "email", "isTeacher"],
+  });
+}
+
+function findUserById(userId: number) {
+  const user = userRepository.findOne({
+    where: {
+      id: userId,
+    },
+    select: ["fullName", "userName", "email", "isTeacher"],
+  });
+
+  if (!userId) {
+    throw new Error(`CityId: ${userId} not found.`);
+  }
+
+  return user;
 }
 
 export default {
-  getUsers,
+  findUsers,
+  findUserById,
 };
