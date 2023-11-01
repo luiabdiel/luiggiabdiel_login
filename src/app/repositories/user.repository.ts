@@ -35,7 +35,7 @@ async function findUserByEmail(email: string): Promise<UserEntity | null> {
   return user;
 }
 
-async function createUser(userData: IUser) {
+async function createUser(userData: IUser): Promise<UserEntity | null> {
   const existingUser = await findUserByEmail(userData.email);
 
   if (existingUser) {
