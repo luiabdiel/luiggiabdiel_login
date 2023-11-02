@@ -5,6 +5,8 @@ import { AppDataSource } from "./database/data-source";
 import { PORT } from "./constants/environments";
 import { routers } from "./app/routes/routes";
 import { rateLimit } from "express-rate-limit";
+import fs from "fs";
+import MarkdownIt from "markdown-it";
 
 const app = express();
 
@@ -23,7 +25,13 @@ app.use(routers);
 app.use(limiter);
 
 app.get("/", (_, res) => {
-  res.send("Hello, Node!");
+  const readme = fs.readFileSync("../README.md", "utf8");
+
+  const md = new MarkdownIt();
+
+  const htmlContent = md.render(readme);
+
+  res.send(htmlContent);
 });
 
 AppDataSource.initialize()
