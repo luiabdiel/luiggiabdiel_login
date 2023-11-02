@@ -17,7 +17,7 @@ userRouter.get(
   "/:id",
   async (req: Request, res: Response): Promise<Response> => {
     try {
-      const idUser = Number(req.params.id);
+      const idUser = parseInt(req.params.id);
 
       const user = await userRepository.findUserById(idUser);
 
