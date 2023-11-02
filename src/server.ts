@@ -25,7 +25,7 @@ app.use(routers);
 app.use(limiter);
 
 app.get("/", (_, res) => {
-  const readme = fs.readFileSync("../README.md", "utf8");
+  const readme = fs.readFileSync("README.md", "utf8");
 
   const md = new MarkdownIt();
 
