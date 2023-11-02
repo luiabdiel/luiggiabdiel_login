@@ -1,5 +1,6 @@
 import { AppDataSource } from "../../database/data-source";
 import { UserEntity } from "../entities/user.entity";
+import { NotFoundException } from "../exeception/not-found";
 import { IUser } from "../interfaces/user.interface";
 
 export const userRepository = AppDataSource.getRepository(UserEntity);
@@ -18,8 +19,8 @@ async function findUserById(userId: number): Promise<UserEntity | null> {
     select: ["id", "fullName", "userName", "email", "isTeacher"],
   });
 
-  if (!userId) {
-    throw new Error(`User: ${userId} not found.`);
+  if (!user) {
+    throw new NotFoundException(`User: ${userId} not found.`);
   }
 
   return user;
@@ -39,7 +40,7 @@ async function createUser(userData: IUser): Promise<UserEntity | null> {
   const existingUser = await findUserByEmail(userData.email);
 
   if (existingUser) {
-    throw new Error(`The email ${userData.email} is already in use.`);
+    throw new Error(`The email is already in use.`);
   }
 
   const newUser = userRepository.create(userData);
