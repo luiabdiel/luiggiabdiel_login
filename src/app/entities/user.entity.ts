@@ -23,7 +23,7 @@ export class UserEntity {
   @Column({ name: "email", nullable: false })
   email: string;
 
-  @Column({ name: "isTeacher", nullable: false })
+  @Column({ name: "isTeacher", nullable: false, default: false })
   isTeacher: boolean;
 
   @CreateDateColumn({ name: "createdAt" })
