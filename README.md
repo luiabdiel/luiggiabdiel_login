@@ -20,11 +20,11 @@ O projeto foi desenvolvido com base em uma abordagem "Code First", onde os model
 
 2. Rotas da API:
 
-- /users: Rota para buscar todos os usuários cadastrados.
+- /users
 
-- /users/:id: Rota para buscar um usuário específico com base em seu ID.
+- /users/:id
 
-- /register: Rota para registrar um novo usuário no sistema.
+- /register
 
 3. Integração com o Banco de Dados: O TypeORM foi usado para mapear os modelos de dados para tabelas no banco de dados MySQL. Isso permite que os dados dos alunos sejam armazenados e gerenciados de forma eficaz.
 
@@ -61,27 +61,6 @@ Siga estas etapas para executar o projeto em sua máquina:
 ```
 
 Agora, a API estará em execução em seu ambiente local e você poderá acessar as rotas especificadas para buscar usuários e registrar novos alunos.
-
-Agora, a API estará em execução em seu ambiente local e você poderá acessar as rotas especificadas para buscar usuários e registrar novos alunos.
-
-### Rotas da API
-
-**`GET /users`**
-
-- Esta rota retorna todos os usuários cadastrados no sistema.
-- Método: GET
-
-**`GET /users/:id`**
-
-- Esta rota retorna um usuário específico com base em seu ID.
-- Método: GET
-- Parâmetros da URL: id (ID do usuário)
-
-**`POST /register`**
-
-- Descrição: Esta rota permite o registro de um novo usuário no sistema.
-- Método: POST
-- Corpo da Requisição: Os dados do usuário a ser registrado.
 
 ### Conclusão
 
