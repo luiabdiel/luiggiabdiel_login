@@ -14,7 +14,7 @@ Este é um projeto de API RESTful desenvolvido para o cadastro de alunos em um s
 
 - Railway: Plataforma utilizada para fazer o deploy da API e hospedar o banco de dados.
 
-Para obter informações detalhadas sobre as rotas e funcionalidades da API, consulte a **_[documentação](https://luiggiabdiellogin-production.up.railway.app/docs/)_**. Você também pode acessar a API em funcionamento no link de **_[deploy](https://luiggiabdiellogin-production.up.railway.app/)_**.
+Para obter informações detalhadas sobre as rotas da API, consulte a **_[documentação](https://luiggiabdiellogin-production.up.railway.app/docs/)_**. Você também pode acessar a API em funcionamento no link de **_[deploy](https://luiggiabdiellogin-production.up.railway.app/)_**.
 
 ### Desenvolvimento
 
