@@ -1,6 +1,6 @@
 # Desafio **UpBase**
 
-Este é um projeto de API RESTful para cadastro de alunos em um sistema EAD. Neste README, vou explicar como o projeto foi desenvolvido e apresentar as três principais rotas da API.
+Este é um projeto de API RESTful desenvolvido para o cadastro de alunos em um sistema de Ensino à Distância (EAD). Abaixo, você encontrará informações sobre as tecnologias utilizadas, a abordagem de desenvolvimento e as etapas para executar o projeto localmente.
 
 ### Tecnologias Utilizadas
 
@@ -12,6 +12,10 @@ Este é um projeto de API RESTful para cadastro de alunos em um sistema EAD. Nes
 
 - MySQL: O banco de dados utilizado para armazenar os dados dos alunos.
 
+- Railway: Plataforma utilizada para fazer o deploy da API e hospedar o banco de dados.
+
+Para obter informações detalhadas sobre as rotas e funcionalidades da API, consulte a **_[documentação](https://luiggiabdiellogin-production.up.railway.app/docs/)_**. Você também pode acessar a API em funcionamento no link de **_[deploy](https://luiggiabdiellogin-production.up.railway.app/)_**.
+
 ### Desenvolvimento
 
 O projeto foi desenvolvido com base em uma abordagem "Code First", onde os modelos de dados foram criados de acordo com as necessidades do sistema. Aqui estão os principais pontos de desenvolvimento:
@@ -20,13 +24,13 @@ O projeto foi desenvolvido com base em uma abordagem "Code First", onde os model
 
 2. Rotas da API:
 
-- /users
+- _/users_
 
-- /users/:id
+- _/users/:id_
 
-- /register
+- _/register_
 
-3. Integração com o Banco de Dados: O TypeORM foi usado para mapear os modelos de dados para tabelas no banco de dados MySQL. Isso permite que os dados dos alunos sejam armazenados e gerenciados de forma eficaz.
+3. Integração com o Banco de Dados: O TypeORM foi utilizado para mapear os modelos de dados para tabelas no banco de dados MySQL hospedado no Railway. Isso permite o armazenamento e gerenciamento eficaz dos dados dos alunos.
 
 ### Como Executar o Projeto
 
@@ -64,4 +68,4 @@ Agora, a API estará em execução em seu ambiente local e você poderá acessar
 
 ### Conclusão
 
-Este projeto de API de cadastro de alunos foi desenvolvido utilizando Node.js, Express e TypeORM, com um banco de dados MySQL. Ele fornece as funcionalidades necessárias para buscar e registrar alunos no sistema EAD.
+Este projeto de API para cadastro de alunos foi desenvolvido com tecnologias como Node.js, Express, TypeORM e MySQL, com deploy e hospedagem feitos por meio da plataforma Railway. Ele fornece funcionalidades essenciais para buscar e registrar alunos em um sistema de Ensino à Distância (EAD). Para obter informações detalhadas sobre as rotas e seu funcionamento, consulte a **_[documentação](https://luiggiabdiellogin-production.up.railway.app/docs/)_**.
