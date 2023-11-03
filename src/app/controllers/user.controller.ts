@@ -9,7 +9,7 @@ userRouter.get("/", async (_, res: Response): Promise<Response> => {
 
     return res.status(200).json(users);
   } catch (error) {
-    return res.status(500).json({ error: "Internal server error." });
+    return res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -23,7 +23,7 @@ userRouter.get(
 
       return res.status(200).json(user);
     } catch (error) {
-      return res.status(404).json({ error: "User not found." });
+      return res.status(404).json({ error: "User not found" });
     }
   }
 );
@@ -36,6 +36,6 @@ userRouter.post("/", async (req: Request, res: Response): Promise<Response> => {
 
     return res.status(201).json(newUser);
   } catch (error) {
-    return res.status(500).json({ error: "Error creating the user." });
+    return res.status(500).json({ error: "Error creating the user" });
   }
 });

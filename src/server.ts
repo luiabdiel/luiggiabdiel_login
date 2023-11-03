@@ -7,6 +7,8 @@ import { routers } from "./app/routes/routes";
 import { rateLimit } from "express-rate-limit";
 import fs from "fs";
 import MarkdownIt from "markdown-it";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swagger.json";
 
 const app = express();
 
@@ -23,6 +25,8 @@ app.use(cors());
 app.use(express.json());
 app.use(routers);
 app.use(limiter);
+
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/", (_, res) => {
   const readme = fs.readFileSync("README.md", "utf8");

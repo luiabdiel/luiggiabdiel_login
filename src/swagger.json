@@ -1,0 +1,161 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de cadastro de usuários",
+    "description": "Esta é um API RESTful para cadastro de usuários em um sistema EAD",
+    "contact": {
+      "email": "luiggiabdieldev@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://luiggiabdiellogin-production.up.railway.app/",
+      "description": "API de produção"
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "summary": "Cadastro de usuário",
+        "description": "Esta rota permite o registro de um novo usuário no sistema",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "User": {
+                  "value": {
+                    "fullName": "Isabel Hodges Ortega",
+                    "userName": "Isabel",
+                    "password": "isabelHO21",
+                    "email": "isabelhodges@email.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Error creating the user"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserCreated"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Buscar todos os usuários",
+        "description": "Esta rota retorna todos os usuários cadastrados no sistema",
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Buscar um usuário pelo id",
+        "description": "Esta rota retorna um usuário específico com base em seu id",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Buscar usuário pelo id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User not found"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "UserCreated": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "isTeacher": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
