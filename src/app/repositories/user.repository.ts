@@ -1,5 +1,6 @@
 import { AppDataSource } from "../../database/data-source";
 import { UserEntity } from "../entities/user.entity";
+import { BadRequestException } from "../exeception/bad-request";
 import { NotFoundException } from "../exeception/not-found";
 import { IUser } from "../interfaces/user.interface";
 
@@ -42,11 +43,11 @@ async function createUser(userData: IUser): Promise<UserEntity | null> {
   const missingFields = requiredFields.filter(field => !userData[field]);
 
   if (missingFields.length) {
-    throw new Error(`Missing required field(s): ${missingFields.join(', ')}`);
+    throw new BadRequestException(`Missing required field(s): ${missingFields.join(', ')}`);
   }
 
   if (existingUser) {
-    throw new Error('The email is already in use');
+    throw new BadRequestException('The email is already in use');
   }
 
   const newUser = userRepository.create(userData);

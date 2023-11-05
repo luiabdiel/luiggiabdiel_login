@@ -35,15 +35,15 @@ app.get("/", (_, res) => {
 
   if(readmeContent) {
     res.send(readmeContent);
-  } else {
-    const readme = fs.readFileSync("README.md", "utf8");
-    const md = new MarkdownIt();
-    const htmlContent = md.render(readme);
-
-    myCache.set("readme", htmlContent, fifteenMinutesInMilliseconds)
-
-    res.send(htmlContent);
   }
+
+  const readme = fs.readFileSync("README.md", "utf8");
+  const md = new MarkdownIt();
+  const htmlContent = md.render(readme);
+
+  myCache.set("readme", htmlContent, fifteenMinutesInMilliseconds)
+
+  return res.send(htmlContent);
 });
 
 AppDataSource.initialize()

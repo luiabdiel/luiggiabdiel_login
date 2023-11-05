@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 import userRepository from "../repositories/user.repository";
 import { NotFoundException } from "../exeception/not-found";
+import { BadRequestException } from "../exeception/bad-request";
 
 export const userRouter = Router();
 
@@ -38,11 +39,11 @@ userRouter.post("/", async (req: Request, res: Response): Promise<Response> => {
 
     return res.status(201).json(newUser);
   } catch (error) {
-    if(error instanceof Error) {
-      if(error.message === "The email is already in use") {
-        return res.status(409).json({ error: error.message });
+    if(error instanceof BadRequestException) {
+      if(error.getMessage() === "The email is already in use") {
+        return res.status(409).json( error );
       } else {
-        return res.status(400).json({ error: error.message});
+        return res.status(400).json(error);
       }
     }
 
