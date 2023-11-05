@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import userRepository from "../repositories/user.repository";
+import { NotFoundException } from "../exeception/not-found";
 
 export const userRouter = Router();
 
@@ -23,7 +24,10 @@ userRouter.get(
 
       return res.status(200).json(user);
     } catch (error) {
-      return res.status(404).json({ error: "User not found" });
+      if(error instanceof NotFoundException) {
+        return res.status(404).json(error);
+      }
+      return res.status(500).json({ error: "Internal server error" });
     }
   }
 );
@@ -36,6 +40,10 @@ userRouter.post("/", async (req: Request, res: Response): Promise<Response> => {
 
     return res.status(201).json(newUser);
   } catch (error) {
-    return res.status(500).json({ error: "Error creating the user" });
+    if(error instanceof Error) {
+      return res.status(500).json({ error: error.message});
+    }
+
+    return res.status(500).json({ error: "Internal server error" });
   }
 });

@@ -20,7 +20,7 @@ async function findUserById(userId: number): Promise<UserEntity | null> {
   });
 
   if (!user) {
-    throw new NotFoundException(`User: ${userId} not found.`);
+    throw new NotFoundException(`User not found.`);
   }
 
   return user;
