@@ -19,7 +19,6 @@ userRouter.get(
   async (req: Request, res: Response): Promise<Response> => {
     try {
       const idUser = parseInt(req.params.id);
-
       const user = await userRepository.findUserById(idUser);
 
       return res.status(200).json(user);
@@ -35,13 +34,12 @@ userRouter.get(
 userRouter.post("/", async (req: Request, res: Response): Promise<Response> => {
   try {
     const userData = req.body;
-
     const newUser = await userRepository.createUser(userData);
 
     return res.status(201).json(newUser);
   } catch (error) {
     if(error instanceof Error) {
-      return res.status(500).json({ error: error.message});
+      return res.status(400).json({ error: error.message});
     }
 
     return res.status(500).json({ error: "Internal server error" });

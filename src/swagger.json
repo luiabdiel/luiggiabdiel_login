@@ -19,7 +19,9 @@
       "post": {
         "summary": "Cadastro de usuário",
         "description": "Esta rota permite o registro de um novo usuário no sistema",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -41,7 +43,13 @@
         },
         "responses": {
           "500": {
-            "description": "Error creating the user"
+            "description": "Internal server error"
+          },
+          "400": {
+            "description": "The email is already in use"
+          },
+          "400": {
+            "description": "Missing required field"
           },
           "201": {
             "description": "Created",
@@ -60,7 +68,9 @@
       "get": {
         "summary": "Buscar todos os usuários",
         "description": "Esta rota retorna todos os usuários cadastrados no sistema",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -80,7 +90,9 @@
       "get": {
         "summary": "Buscar um usuário pelo id",
         "description": "Esta rota retorna um usuário específico com base em seu id",
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -92,6 +104,9 @@
         "responses": {
           "404": {
             "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
           },
           "200": {
             "description": "OK",

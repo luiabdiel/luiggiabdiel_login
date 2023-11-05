@@ -20,7 +20,7 @@ async function findUserById(userId: number): Promise<UserEntity | null> {
   });
 
   if (!user) {
-    throw new NotFoundException(`User not found.`);
+    throw new NotFoundException('User not found');
   }
 
   return user;
@@ -38,9 +38,15 @@ async function findUserByEmail(email: string): Promise<UserEntity | null> {
 
 async function createUser(userData: IUser): Promise<UserEntity | null> {
   const existingUser = await findUserByEmail(userData.email);
+  const requiredFields: (keyof IUser)[] = ['fullName', 'userName', 'email', 'password'];
+  const missingFields = requiredFields.filter(field => !userData[field]);
+
+  if (missingFields.length) {
+    throw new Error(`Missing required field(s): ${missingFields.join(', ')}`);
+  }
 
   if (existingUser) {
-    throw new Error(`The email is already in use.`);
+    throw new Error('The email is already in use');
   }
 
   const newUser = userRepository.create(userData);
