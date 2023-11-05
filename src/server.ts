@@ -14,7 +14,7 @@ import NodeCache from "node-cache";
 const app = express();
 const myCache = new NodeCache();
 
-const fifteenMinutesInMilliseconds  = 15 * 60 * 1000; // 15 minutes
+const fifteenMinutesInMilliseconds  = 15 * 60 * 1000;
 const maxRequestsPerWindow = 100;
 
 const limiter = rateLimit({
