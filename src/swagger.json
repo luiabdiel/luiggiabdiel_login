@@ -45,7 +45,7 @@
           "500": {
             "description": "Internal server error"
           },
-          "400": {
+          "409": {
             "description": "The email is already in use"
           },
           "400": {

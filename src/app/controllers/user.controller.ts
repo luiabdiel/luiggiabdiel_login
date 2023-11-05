@@ -39,7 +39,11 @@ userRouter.post("/", async (req: Request, res: Response): Promise<Response> => {
     return res.status(201).json(newUser);
   } catch (error) {
     if(error instanceof Error) {
-      return res.status(400).json({ error: error.message});
+      if(error.message === "The email is already in use") {
+        return res.status(409).json({ error: error.message });
+      } else {
+        return res.status(400).json({ error: error.message});
+      }
     }
 
     return res.status(500).json({ error: "Internal server error" });
