@@ -9,14 +9,16 @@ import fs from "fs";
 import MarkdownIt from "markdown-it";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger.json";
+import NodeCache from "node-cache";
 
 const app = express();
+const myCache = new NodeCache();
 
-const windowMs = 15 * 60 * 1000; // 15 minutes
+const fifteenMinutesInMilliseconds  = 15 * 60 * 1000; // 15 minutes
 const maxRequestsPerWindow = 100;
 
 const limiter = rateLimit({
-  windowMs,
+  windowMs: fifteenMinutesInMilliseconds,
   max: maxRequestsPerWindow,
   message: "Too many requests, please try again later",
 });
@@ -29,13 +31,19 @@ app.use(limiter);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/", (_, res) => {
-  const readme = fs.readFileSync("README.md", "utf8");
+  const readmeContent = myCache.get("readme")
 
-  const md = new MarkdownIt();
+  if(readmeContent) {
+    res.send(readmeContent);
+  } else {
+    const readme = fs.readFileSync("README.md", "utf8");
+    const md = new MarkdownIt();
+    const htmlContent = md.render(readme);
 
-  const htmlContent = md.render(readme);
+    myCache.set("readme", htmlContent, fifteenMinutesInMilliseconds)
 
-  res.send(htmlContent);
+    res.send(htmlContent);
+  }
 });
 
 AppDataSource.initialize()
