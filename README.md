@@ -1,4 +1,4 @@
-# Desafio **UpBase**
+# Desafio API register
 
 Este é um projeto de API RESTful desenvolvido para o cadastro de alunos em um sistema de Ensino à Distância (EAD). Abaixo, você encontrará informações sobre as tecnologias utilizadas, a abordagem de desenvolvimento e as etapas para executar o projeto localmente.
 
