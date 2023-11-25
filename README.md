@@ -41,13 +41,13 @@ Siga estas etapas para executar o projeto em sua máquina:
 2. Clone este repositório para o seu sistema:
 
 ```
-  $ git clone <URL_DO_REPOSITÓRIO>
+  $ git clone https://github.com/luiabdiel/luiggiabdiel_login.git
 ```
 
 3. Navegue até o diretório do projeto:
 
 ```
-  $ cd <NOME_DO_DIRETÓRIO>
+  $ cd luiggiabdiel_login
 ```
 
 4. Instale as dependências usando o npm:
